@@ -1,0 +1,6 @@
+.DS_STORE
+node_modules/*
+bench/.hsd/
+package-lock.json
+runcpu.sh
+.nvmrc
