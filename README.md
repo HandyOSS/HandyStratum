@@ -3,12 +3,18 @@
 A segwit-capable stratum server on top of [hsd][hsd]. This is a hsd
 plugin which will run a stratum server in the same process as a hsd fullnode.
 
+**HandyMiner Team Donation Address (HNS): ```hs1qwfpd5ukdwdew7tn7vdgtk0luglgckp3klj44f8```**
+
+**HandyMiner Team Donation Address (BTC): ```bc1qk3rk4kgek0hzpgs8qj4yej9j5fs7kcnjk7kuvt```**
+
 ## Usage
 
 HandyStratum can be used as a hsd plugin.
 
+Simply ```npm install HandyStratum``` within your hsd directory and run like:
+
 ``` bash
-$ hsd --plugins handystratum \
+$ hsd --plugins HandyStratum \
   --stratum-host :: \
   --stratum-port 3008 \
   --stratum-public-host pool.example.com \
@@ -19,6 +25,8 @@ $ hsd --plugins handystratum \
   --stratum-password=admin-pass
   --daemon
 ```
+
+Additional notes on running/configuration can be found in (./docs/README.md)[./docs/README.md] and an example shell script is in (./run.sh)[./run.sh]
 
 ## Cutting out the middleman
 
@@ -51,10 +59,6 @@ HandyStratum exposes some custom stratum calls:
 `mining.authorize_admin('password')` to auth as an admin and
 `mining.add_user('username', 'password')` to create a user during runtime.
 
-## Todo
-
-- Reverse/failover proxy for `HASH(sid)->hsd-stratum-ip`.
-
 ## Contribution and License Agreement
 
 If you contribute code to this project, you are implicitly allowing your code
@@ -70,3 +74,5 @@ Copyright (c) 2021, HandyMiner: Alex Smith, Steven McKie, Thomas Costanzo (MIT L
 See LICENSE for more info.
 
 [hsd]: https://github.com/hsd-org/hsd
+[HandyMiner-Goldshell-CLI]: https://github.com/HandyMiner/HandyMiner-Goldshell-CLI
+[HandyMiner-Goldshell-GUI]: https://github.com/HandyMiner/HandyMiner-Goldshell-GUI
