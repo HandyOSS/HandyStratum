@@ -13,7 +13,7 @@ How mask is generated in HandyStratum:
 //lib/primitives.js:setAttemptMask(attempt,mask) (line 483)
 pool  target: 0x000000ff00000000...
 block target: 0x000000000000000f...
-mask can be : 0x0000000XXXXXXXX0... (one of the X's will be set to a 1 randomly.)
+mask can be : 0x0000000XXXXXXXX0... (one of the X's will be set to a 1-f randomly.)
 ```
 Thus the mask is built into the block header and obfuscated from the mining client as the mining client is returned the maskHash ( Blake2b.multi(previousBlock,mask) ) for the block header creation on the client.
 
@@ -21,7 +21,7 @@ Thus the mask is built into the block header and obfuscated from the mining clie
 HandyStratum runs as a plugin to hsd. Simply install it in your hsd directory ```npm install HandyStratum``` and run it like:
 
 ```Example: /run.sh```
-Note: --stratum-difficulty 8. This is pretty reasonable for an hs1, maybe a tad low for an hs1-plus but allows it time to ramp up with variable diff. I would recommend having a second instance running on another port with a much higher initial diff specifically for hs3/hs5 (TH scale asics).
+**Note:** --stratum-difficulty 8. This is pretty low-ish reasonable for an hs1, maybe a tad low for an hs1-plus but allows it time to ramp up with variable diff. I would recommend having a second instance running on another port with a much higher initial diff specifically for hs3/hs5 (TH scale asics).
 ```
 #!/bin/bash
 WALLET=hs1qwfpd5ukdwdew7tn7vdgtk0luglgckp3klj44f8
