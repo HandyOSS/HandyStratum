@@ -3,7 +3,7 @@
 A segwit-capable stratum server on top of [hsd][hsd]. This is a hsd
 plugin which will run a stratum server in the same process as a hsd fullnode.
 
-HandyStratum implements header generation from hsd.getBlockTemplate as well as the mask feature. Read more about mask in detail within [./docs/README.md](./docs/README.md)
+HandyStratum implements header generation from hsd.getBlockTemplate as well as the mask feature which was engineered to prevent what is known as a “block-witholding attack” that is present in Bitcoin mining. Read more about mask in detail within [./docs/README.md](./docs/README.md)
 
 **HandyMiner Team Donation Address (HNS): ```hs1qwfpd5ukdwdew7tn7vdgtk0luglgckp3klj44f8```**
 
@@ -30,24 +30,17 @@ $ hsd --plugins HandyStratum \
 
 Additional notes on running/configuration can be found in [./docs/README.md](./docs/README.md) and an example shell script is in [./run.sh](./run.sh)
 
-## Cutting out the middleman
+## Cutting Out More Middlemen
 
-While having a stratum+fullnode marriage violates separation of concerns, it
-provides a benefit to large competitive miners: because it sits in the same
-process, there is no overhead of hitting/longpolling a JSON-rpc api to submit
-or be notified of new blocks. It has direct in-memory access to all of the data
-it needs. No getwork or getblocktemplate required.
+While having a stratum+fullnode marriage violates separation of concerns, it provides a benefit to large competitive miners: because it sits in the same process, there is no overhead of hitting/longpolling a JSON-RPC API to submit or be notified of new blocks. It has direct in-memory access to all of the data it needs. No getwork or getblocktemplate required, and is one of the “cleanest” ways to produce blocks efficiently and safely for the network.
 
-It can also broadcast submitted blocks before verifying and saving them to disk
-(since we created the block and know it's going to be valid ahead of time).
+It can also broadcast submitted blocks before verifying and saving them to disk (since we created the block and know it's going to be valid ahead of time).
 
-### Single point of failure?
+### Single Point of Failure?
 
-There's nothing to say you can't have multiple hsd-nodes/stratum-servers
-behind a reverse/failover proxy still. It's only a single point of failure if
-you treat it that way.
+There's nothing to say you can't have multiple hsd-nodes/stratum-servers behind a reverse/failover proxy still. It's only a single point of failure if you treat it that way. Miners are adept at making their operations more efficient, and HandyStratum combined with their industry best-practices should produce a more resilient mining ecosystem for this very important piece of the decentralized web (DWeb).
 
-## Payouts
+## Mining Payouts
 
 Shares are currently tracked by username and will be dumped to
 `~/.hsd/stratum/shares/[height]-[hash].json` when a block is found. A script
@@ -55,7 +48,7 @@ can parse through these later and either add the user's balance to a webserver
 or pay directly to an address. Users are stored in a line-separated json file
 in `~/.hsd/stratum/users.json`.
 
-## Administration
+## Mining Administration
 
 HandyStratum exposes some custom stratum calls:
 `mining.authorize_admin('password')` to auth as an admin and
