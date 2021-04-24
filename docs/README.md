@@ -21,7 +21,7 @@ Thus the mask is built into the block header and obfuscated from the mining clie
 HandyStratum runs as a plugin to hsd. Simply install it in your hsd directory ```npm install HandyStratum``` and run it like:
 
 ```Example: /run.sh```
-**Note:** --stratum-difficulty 8. This is pretty low-ish reasonable for an hs1, maybe a tad low for an hs1-plus but allows it time to ramp up with variable diff. I would recommend having a second instance running on another port with a much higher initial diff specifically for hs3/hs5 (TH scale asics).
+**Note:** --stratum-difficulty 8. This is pretty low-ish reasonable for an hs1, definitely low for an hs1-plus but also allows it time to ramp up with variable diff. I would recommend having a second instance running on another port with a much higher initial diff specifically for hs3/hs5 (TH scale asics).
 ```
 #!/bin/bash
 WALLET=hs1qwfpd5ukdwdew7tn7vdgtk0luglgckp3klj44f8
@@ -53,7 +53,7 @@ fi
 --http-host=0.0.0.0 \
 --coinbase-address=$WALLET \
 --listen \
---plugins HandyStratum \
+--plugins handystratum \
 --stratum-host 0.0.0.0 \
 --stratum-port 3008 \
 --stratum-public-host 0.0.0.0 \

@@ -13,10 +13,10 @@ HandyStratum implements header generation from hsd.getBlockTemplate as well as t
 
 HandyStratum can be used as a hsd plugin.
 
-Simply ```npm install HandyStratum``` within your hsd directory and run like:
+Simply ```npm install handystratum``` within your hsd directory and run like:
 
 ``` bash
-$ hsd --plugins HandyStratum \
+$ hsd --plugins handystratum \
   --stratum-host :: \
   --stratum-port 3008 \
   --stratum-public-host pool.example.com \
